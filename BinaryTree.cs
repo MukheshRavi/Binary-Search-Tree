@@ -9,8 +9,8 @@ namespace BinarySearchTree
         public T nodeData { get; set; }
         public BinaryTree<T> leftTree { get; set; }
         public BinaryTree<T> rightTree { get; set; }
-        public int leftCount;
-        public int rightCount;
+        public static int leftCount;
+        public static int rightCount;
         /// <summary>
         /// Parameterised constructor
         /// </summary>
@@ -28,9 +28,10 @@ namespace BinarySearchTree
         /// <param name="item"></param>
         public void Insert(T item)
         {
-            T currentNodeValue = this.nodeData;
-            int value = currentNodeValue.CompareTo(item);
-            if ((currentNodeValue.CompareTo(item)) > 0)
+            T parentValue = this.nodeData;
+            int value = parentValue.CompareTo(item);
+            ///if entered new node data is less than parent data then it will be added to left
+            if ((parentValue.CompareTo(item)) > 0)
             {
                 if (this.leftTree == null)
                 {
@@ -43,6 +44,7 @@ namespace BinarySearchTree
 
             else
             {
+                ///if entered new node data is more than parent data then it will be added to right
                 if (this.rightTree == null)
                 {
                     this.rightTree = new BinaryTree<T>(item);
@@ -51,27 +53,36 @@ namespace BinarySearchTree
                 else
                 {
                     this.rightTree.Insert(item);
-                    Console.WriteLine("Inserting " + item);
                 }
 
             }
         }
-
-
+        /// <summary>
+        /// Displaying binary search tree in Inorder
+        /// leftchild-parent-Rightchild
+        /// </summary>
         public void Display()
         {
             if (this.leftTree != null)
             {
-                this.leftCount++;
+                leftCount++;
+                ///Iterates to last left node and display node
                 this.leftTree.Display();
             }
             Console.WriteLine(this.nodeData.ToString());
             if (this.rightTree != null)
             {
-                this.rightCount++;
+                rightCount++;
                 this.rightTree.Display();
             }
 
+        }
+        /// <summary>
+        /// This method returns the size of tree
+        /// </summary>
+        public void GetSize()
+        {
+            Console.WriteLine("Size" + " " + (1 + leftCount + rightCount));
         }
     }
 }
