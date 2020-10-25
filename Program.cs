@@ -6,7 +6,13 @@ namespace BinarySearchTree
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to BInary Search Tree");
+            ///creating head node by parameterised constructor
+            BinaryTree<int> binaryTree = new BinaryTree<int>(56);
+            binaryTree.Insert(30);
+            binaryTree.Insert(70);
+            ///Displaying binary tree
+            binaryTree.Display();
+
         }
     }
 }
