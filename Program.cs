@@ -23,6 +23,7 @@ namespace BinarySearchTree
             ///Displaying binary tree
             binaryTree.Display();
             binaryTree.GetSize();
+            binaryTree.Search(63);
 
         }
     }

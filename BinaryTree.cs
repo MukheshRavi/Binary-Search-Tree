@@ -84,5 +84,30 @@ namespace BinarySearchTree
         {
             Console.WriteLine("Size" + " " + (1 + leftCount + rightCount));
         }
+        /// <summary>
+        /// This method searches for a particular item
+        /// </summary>
+        /// <param name="item"></param>
+        public void Search(T item)
+        {
+            T parentValue = this.nodeData;
+            int value = parentValue.CompareTo(item);
+            ///if entered new node data is less than parent data then it will move to left to search
+            if (value > 0)
+            {
+                if (this.leftTree.nodeData.Equals(item))
+                    Console.WriteLine("Found value");
+                else
+                    this.leftTree.Search(item);
+            }
+            else
+            {
+                ///if entered new node data is more than parent data then it will move to right to search
+                if (this.rightTree.nodeData.Equals(item))
+                   Console.WriteLine("Found value");
+                else
+                   this.rightTree.Search(item);
+            }
+        }
     }
 }
